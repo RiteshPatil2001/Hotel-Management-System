@@ -1,0 +1,22 @@
+/* _variables.scss */
+
+/* Colors */
+$primary-color: #7c3aed;
+$secondary-color: #4f46e5;
+$text-color-dark: #1f2937;
+$text-color-muted: #6b7280;
+$background-light: #f9f5ff;
+$background-lighter: #f3f4f6;
+$border-color: #e5e7eb;
+$border-color-dark: #979797;
+$text-light: white;
+
+/* Gradients */
+$primary-gradient: linear-gradient(135deg, $primary-color, $secondary-color);
+$secondary-gradient :linear-gradient(135deg, $secondary-color, $primary-color);
+$hover-gradient: linear-gradient(135deg, $secondary-color, $primary-color);
+
+/* Box shadows */
+$shadow-light: 0 8px 20px rgba(0, 0, 0, 0.08);
+$shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.42);
+$avatar-shadow: 0 4px 10px rgba(124, 58, 237, 0.4);

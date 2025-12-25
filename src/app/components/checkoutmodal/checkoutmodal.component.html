@@ -1,0 +1,87 @@
+<div class="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h2><mat-icon>logout</mat-icon> Confirm Checkout</h2>
+      <button class="close-btn" (click)="onCancel()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group large">
+          <label>Name</label>
+          <input [value]="data.name" readonly />
+        </div>
+
+        <div class="form-group small">
+          <label>Room Count</label>
+          <input [value]="data.roomsCount" readonly />
+        </div>
+
+        <div class="form-group medium">
+          <label>Rooms</label>
+          <input [value]="data.roomNumbers" readonly />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group half">
+          <label>Other Members</label>
+          <textarea [value]="data.otherMembers" readonly></textarea>
+        </div>
+
+        <div class="form-group half">
+          <label>Full Address</label>
+          <textarea [value]="data.fullAddress" readonly></textarea>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Check-In</label>
+          <input [value]="formatedCheckInDateTime" readonly />
+        </div>
+
+        <div class="form-group">
+          <label>Check-Out</label>
+          <input [value]="formatedCheckOutDateTime" readonly />
+        </div>
+
+        <div class="form-group">
+          <label>ID Type</label>
+          <input [value]="data.idType" readonly />
+        </div>
+
+        <div class="form-group">
+          <label>ID Details</label>
+          <input [value]="data.idDetails" readonly />
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <div class="payment-info">
+        <label>
+          Total Bill:
+          <span class="amount">{{ totalBill | currency : "INR" }}</span>
+        </label>
+        <label>Paid by</label>
+        <select [(ngModel)]="selectedPaymentMethod">
+          <option value="select">Select</option>
+          <option value="UPI">UPI</option>
+          <option value="Card">Card</option>
+          <option value="Cash">Cash</option>
+        </select>
+        <label>
+          On: <span>{{ formatedPaymentDateTime }}</span>
+        </label>
+      </div>
+
+      <button class="checkout-btn" (click)="onConfirm()">
+        <mat-icon fontIcon="logout"></mat-icon> Checkout Now
+      </button>
+
+    </div>
+  </div>
+</div>

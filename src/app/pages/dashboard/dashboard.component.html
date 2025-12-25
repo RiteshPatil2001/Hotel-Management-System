@@ -1,0 +1,24 @@
+<div class="mainsubcontent">
+  <div class="header-section">
+    <div class="search-wrapper">
+      <input
+        type="text"
+        placeholder="Search by Name, ID, Room No, or Date..."
+        [(ngModel)]="searchTerm"
+        (input)="filterBookings()"
+      />
+      <span class="search-icon">🔍</span>
+    </div>
+    <div class="newCheckIN">
+      <button (click)="openCheckoutModal()">
+        <span class="material-icons">add_circle_outline</span>
+        Add New Check-IN
+      </button>
+    </div>
+  </div>
+  <div class="booking-list-wrapper">
+    @for (item of filteredBookings; track $index) {
+      <app-bookinglist [customerData]="item" />
+    }
+  </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="sidebar-container" [class.collapsed]="isCollapsed"[class.expanded]="!isCollapsed">
+  <div class="toggle-btn" (click)="toggleSidebar()">
+    <span *ngIf="isCollapsed">&#9776;</span>
+    <span *ngIf="!isCollapsed">&times;</span>
+  </div>
+
+  <section class="menu">
+    <div class="menu-options" routerLink="dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" #dashboardRla="routerLinkActive">
+      <span class="menu-text" *ngIf="!isCollapsed">Dashboard</span>
+      <span>
+        <img
+          class="sidebaricons"
+          src="../../../assets/Icons/home.svg"
+          *ngIf="!dashboardRla.isActive"
+        />
+        <img
+          class="sidebaricons"
+          src="../../../assets/Icons/home-active.svg"
+          *ngIf="dashboardRla.isActive"
+        />
+      </span>
+    </div>
+
+    <div class="menu-options" routerLink="offers" routerLinkActive="active" #offersRla="routerLinkActive">
+      <span class="menu-text" *ngIf="!isCollapsed">Offers</span>
+      <span>
+        <img
+          class="sidebaricons"
+          src="../../../assets/Icons/offers.svg"
+          *ngIf="!offersRla.isActive"
+        />
+        <img
+          class="sidebaricons"
+          src="../../../assets/Icons/offers-active.svg"
+          *ngIf="offersRla.isActive"
+        />
+      </span>
+    </div>
+
+    <div class="menu-options" routerLink="availability" routerLinkActive="active" #availabilityRla="routerLinkActive">
+      <span class="menu-text" *ngIf="!isCollapsed">Availability</span>
+      <span>
+        <img
+          class="sidebaricons"
+          src="../../../assets/Icons/availability.svg"
+          *ngIf="!availabilityRla.isActive"
+        />
+        <img
+          class="sidebaricons"
+          src="../../../assets/Icons/availability-active.svg"
+          *ngIf="availabilityRla.isActive"
+        />
+      </span>
+    </div>
+
+    <div class="menu-options" routerLink="staffs" routerLinkActive="active" #staffRla="routerLinkActive">
+      <span class="menu-text" *ngIf="!isCollapsed">Staff</span>
+      <span>
+        <img
+          class="sidebaricons"
+          src="../../../assets/Icons/staff.svg"
+          *ngIf="!staffRla.isActive"
+        />
+        <img
+          class="sidebaricons"
+          src="../../../assets/Icons/staff-active.svg"
+          *ngIf="staffRla.isActive"
+        />
+      </span>
+    </div>
+
+    <div class="menu-options" routerLink="history" routerLinkActive="active" #historyRla="routerLinkActive">
+      <span class="menu-text" *ngIf="!isCollapsed">Booking History</span>
+      <span>
+        <img
+          class="sidebaricons"
+          src="../../../assets/Icons/bookighistory.svg"
+          *ngIf="!historyRla.isActive"
+        />
+        <img
+          class="sidebaricons"
+          src="../../../assets/Icons/bookinghostory-active.svg"
+          *ngIf="historyRla.isActive"
+        />
+      </span>
+    </div>
+  </section>
+</div>
+<div class="overlay" *ngIf="!isCollapsed" (click)="toggleSidebar()"></div>

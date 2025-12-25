@@ -1,0 +1,38 @@
+<div class="history-container">
+  <div class="header-section">
+    <h1>History Bookings</h1>
+    <div class="filters">
+      <div class="filter-item">
+        <label>Month:</label>
+        <select [(ngModel)]="selectedMonth" (change)="applyFilters()">
+          <option value="All">All</option>
+          <option *ngFor="let month of monthsList" [value]="month">
+            {{ month }}
+          </option>
+        </select>
+      </div>
+      <div class="filter-item">
+        <label>Client Type:</label>
+        <select [(ngModel)]="selectedClientType" (change)="applyFilters()">
+          <option value="All">All</option>
+          <option value="Domestic">Domestic</option>
+          <option value="International">International</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="month-section">
+    @for (group of filteredGroupedBookings; track $index) {
+      <div class="month-block">
+        <span class="month-title">
+          {{ group.month }} &nbsp;({{ group.bookings.length }})
+        </span>
+        <div [ngClass]="isAllMonthsSelected() ? 'horizontal-layout' : 'grid-layout'">
+          @for (item of group.bookings; track $index) {
+            <in-app-historylist [customerData]="item" />
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

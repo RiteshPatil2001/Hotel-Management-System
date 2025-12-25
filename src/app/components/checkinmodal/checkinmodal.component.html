@@ -1,0 +1,84 @@
+<div class="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h2><mat-icon>person_add</mat-icon> Add Client Details</h2>
+      <button class="close-btn" (click)="onCancel()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group large">
+          <label>Name</label>
+          <input placeholder="Enter primary customer name" [(ngModel)]="customerName" />
+        </div>
+
+        <div class="form-group medium">
+          <label>Rooms</label>
+          <ng-multiselect-dropdown
+            class="selectRooms"
+            [settings]="dropdownSettings"
+            [data]="selectRooms"
+            [(ngModel)]="selectedRooms"
+          ></ng-multiselect-dropdown>
+        </div>
+
+        <div class="form-group small">
+          <label>Room Count</label>
+          <input [value]="selectedRoomCount" readonly />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group half">
+          <label>Other members</label>
+          <textarea placeholder="Enter other customer(s) name(s)" [(ngModel)]="otherMembers"></textarea>
+        </div>
+
+        <div class="form-group half">
+          <label>Full Address</label>
+          <textarea placeholder="Enter full address" [(ngModel)]="fullAddress"></textarea>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Location</label>
+          <input placeholder="Enter location" [(ngModel)]="location" />
+        </div>
+
+        <div class="form-group">
+          <label>Check-In</label>
+          <input [value]="formatedCheckInDateTime" readonly />
+        </div>
+
+        <div class="form-group">
+          <label>ID Type</label>
+          <select [(ngModel)]="idType">
+            <option [ngValue]="null" disabled selected>Select ID Type</option>
+            <option value="Aadhar Card">Aadhar Card</option>
+            <option value="Pan Card">Pan Card</option>
+            <option value="Driving License">Driving License</option>
+            <option value="Passport">Passport</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>ID Details</label>
+          <input type="text" placeholder="Enter ID details" [(ngModel)]="idDetails" />
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <div class="checkbox-group">
+        <input type="checkbox" id="foreignClient" [(ngModel)]="isForeignClient" />
+        <label for="foreignClient">Is foreign client</label>
+      </div>
+      <button class="primary-btn" (click)="onSubmitCheckIN()">
+        <mat-icon>check_circle</mat-icon> Check-IN Now
+      </button>
+    </div>
+  </div>
+</div>

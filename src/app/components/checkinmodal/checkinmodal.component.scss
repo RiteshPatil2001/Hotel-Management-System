@@ -1,0 +1,152 @@
+@import '../../../styles/variables';
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 16px;
+  width: 80%;
+  max-width: 950px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #5d06e9, #7a3cff);
+  padding: 1rem 1.5rem;
+  color: white;
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+  }
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 22px;
+  transition: 0.2s;
+  mat-icon {
+    font-size: 22px;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.modal-body {
+  padding: 1.5rem 2rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #4a4a4a;
+  }
+  input,
+  textarea,
+  select {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+    transition: 0.2s;
+    &:focus {
+      border-color: #5d06e9;
+      box-shadow: 0 0 0 3px rgba(93, 6, 233, 0.15);
+      outline: none;
+    }
+  }
+  textarea {
+    resize: none;
+    height: 90px;
+  }
+}
+
+.form-group.small {
+  flex: 0.3;
+}
+
+.form-group.medium {
+  flex: 0.7;
+}
+
+.form-group.large {
+  flex: 1.2;
+}
+
+.form-group.half {
+  flex: 1;
+}
+
+.modal-footer {
+  border-top: 1px solid #eee;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.primary-btn {
+  background: linear-gradient(90deg, #5d06e9, #7a3cff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(93, 6, 233, 0.3);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,58 @@
+<div class="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Booking Details</h2>
+        <button color="primary" (click)="onClose()">Close</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="section">
+        <h3>Guest Information</h3>
+        <div class="row">
+          <div><label>Name:</label> {{ data.name }}</div>
+          <div><label>Location:</label> {{ data.location }}</div>
+        </div>
+        <div class="row">
+          <div><label>Other Members: ({{ data.totalBookings - 1 }})</label> - {{ data.otherMembers }}</div>
+          <div><label>Address:</label> {{ data.fullAddress }}</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Booking Information</h3>
+        <div class="row">
+          <div><label>Room Count:</label> {{ data.roomsCount }}</div>
+          <div><label>Rooms:</label> {{ data.roomNumbers }}</div>
+        </div>
+        <div class="row">
+          <div><label>Check-In:</label> {{ formattedCheckIn }}</div>
+          <div><label>Check-Out:</label> {{ formattedCheckOut || 'Still Checked-In' }}</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Identification</h3>
+        <div class="row">
+          <div><label>ID Type:</label> {{ data.idType }}</div>
+          <div><label>ID Details:</label> {{ data.idDetails }}</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Billing Summary</h3>
+        <div class="row">
+          <div><label>Per Day Bill:</label> ₹{{ data.perDayBill }}</div>
+          <div><label>Total Bill:</label> ₹{{ totalBill }}</div>
+        </div>
+        <div class="row">
+          <div><label>Payment Method:</label> {{ data.paymentMethod || 'Pending' }}</div>
+          <div><label>Status:</label>
+            <span [ngClass]="data.checkout ? 'status-complete' : 'status-active'">
+              {{ data.checkout ? 'Checked-Out' : 'Active' }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

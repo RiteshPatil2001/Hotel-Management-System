@@ -1,0 +1,28 @@
+.app-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.leftsidebar {
+  width: 4%;
+  height: 100%;
+}
+
+.maincontent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.navbarcomponent {
+  height: 12%;
+  flex-shrink: 0;
+}
+
+.xyz{
+  height: 88%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}

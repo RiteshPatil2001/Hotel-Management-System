@@ -1,0 +1,91 @@
+<div class="availability-container">
+  <div class="header">
+    <h1>Room Availability & Maintenance</h1>
+    <div class="actions">
+      <div class="filter-section">
+        <label for="status">Filter by Status:</label>
+        <select id="status" [(ngModel)]="selectedStatus">
+          <option value="All">All</option>
+          <option value="available">Available</option>
+          <option value="booked">Booked</option>
+          <option value="advance booked">Advance Booked</option>
+          <option value="blocked">Under Maintenance</option>
+        </select>
+      </div>
+      <div class="manage-maintenance">
+        <button mat-flat-button class="manage-btn" (click)="toggleManageMenu()">
+          <mat-icon fontIcon="settings"></mat-icon>
+          Manage Maintenance
+        </button>
+        <div class="dropdown" *ngIf="showManageMenu">
+          <button>Add Pre-Booking</button>
+          <button (click)="openAddMaintenance()">➕ Add Maintenance</button>
+          <button (click)="openRemoveMaintenance()">❌ Remove Maintenance</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="left-section">
+      <div *ngFor="let floor of floorItems" class="floor-section">
+        <h3 class="floor-title">{{ floor.floor }}</h3>
+        <div class="rooms-grid">
+          <div
+            *ngFor="let room of getFilteredRooms(floor.rooms)"
+            class="room-card"
+            [matTooltip]="room.maintaince"
+            [ngClass]="{
+              'bookedRoom': room.status === 'booked',
+              'blockedRoom': room.status === 'blocked',
+              'advaceBookings': room.status === 'advance booked',
+              'availableRoom': room.status === 'available'
+            }"
+          >
+            <div class="room-number">{{ room.number }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right-section">
+      <div *ngIf="showAddForm" class="maintenance-form">
+        <h3>Add Room to Maintenance</h3>
+        <div class="form-row">
+          <label>Room:</label>
+          <select [(ngModel)]="maintenanceForm.roomNumber">
+            <option [ngValue]="null" disabled selected>Select Room</option>
+            <option *ngFor="let room of availableRooms" [value]="room.roomNumber">
+              Room {{ room.roomNumber }}
+            </option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Reason:</label>
+          <input type="text" [(ngModel)]="maintenanceForm.reason" placeholder="Enter reason" />
+        </div>
+        <div class="form-buttons">
+          <button class="save-btn" (click)="saveMaintenance()">Save</button>
+          <button class="cancel-btn" (click)="closeForms()">Cancel</button>
+        </div>
+      </div>
+      <div *ngIf="showRemoveForm" class="maintenance-form remove">
+        <h3>Remove Room from Maintenance</h3>
+        <div class="form-row">
+          <label>Select Room:</label>
+          <select [(ngModel)]="selectedRoomForRemoval">
+            <option [ngValue]="0" disabled selected>Select Room</option>
+            <option *ngFor="let task of maintenanceRecords" [value]="task.roomNumber">
+              Room {{ task.roomNumber }}
+            </option>
+          </select>
+        </div>
+        <div class="form-buttons">
+          <button class="save-btn" (click)="markMaintenanceDone()">Mark Done</button>
+          <button class="cancel-btn" (click)="closeForms()">Cancel</button>
+        </div>
+      </div>
+      <div *ngIf="!showAddForm && !showRemoveForm" class="blank-panel">
+        <p>🧹 Select an action from <b>Manage Maintenance</b> to begin.</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="booking-card">
+  <div class="card-header">
+    <div class="guest-section">
+      <div class="avatar">{{ customerData.name.charAt(0).toUpperCase() }}</div>
+      <img
+        *ngIf="customerData.foreignClient"
+        src="../../../assets/Icons/foreignClient.png"
+        alt="Foreign Client"
+        class="foreign-icon"
+      />
+      <div class="guest-info">
+        <h3 class="guest-name">{{ customerData.name }}</h3>
+        <p class="guest-location">{{ customerData.location }}</p>
+        <span class="guest-id"># {{ customerData.customerId }}</span>
+      </div>
+    </div>
+
+    <div class="card-button">
+      <button mat-stroked-button class="btn-details" (click)="openViewModal()">
+        <mat-icon fontIcon="info"></mat-icon>
+        View
+      </button>
+    </div>
+  </div>
+</div>
